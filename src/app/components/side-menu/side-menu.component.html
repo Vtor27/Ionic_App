@@ -1,0 +1,48 @@
+<div
+  class="menu-backdrop"
+  [class.visible]="isOpen$ | async"
+  (click)="close()"
+></div>
+
+<div class="menu-container" [class.open]="isOpen$ | async">
+  <div class="menu-header">
+    <h2>Menú</h2>
+    <ion-button fill="clear" class="close-button" (click)="close()">
+      <ion-icon name="close-outline"></ion-icon>
+    </ion-button>
+  </div>
+
+  <div class="menu-content">
+    <ion-list lines="none">
+      <ion-item button (click)="close()">
+        <ion-icon name="person-outline" slot="start"></ion-icon>
+        <ion-label>Mi Perfil</ion-label>
+      </ion-item>
+
+      <div class="tab-divider"></div>
+
+      <ion-item button (click)="close()">
+        <ion-icon name="settings-outline" slot="start"></ion-icon>
+        <ion-label>Configuración</ion-label>
+      </ion-item>
+
+      <div class="tab-divider"></div>
+
+      <ion-item button (click)="close()">
+        <ion-icon name="help-circle-outline" slot="start"></ion-icon>
+        <ion-label>Ayuda</ion-label>
+      </ion-item>
+
+      <div class="tab-divider"></div>
+
+      <ion-item button (click)="close()">
+        <ion-icon name="log-out-outline" slot="start"></ion-icon>
+        <ion-label>Cerrar Sesión</ion-label>
+      </ion-item>
+    </ion-list>
+  </div>
+
+  <div class="menu-footer">
+    <p class="version">Versión 1.0.0</p>
+  </div>
+</div>

@@ -1,0 +1,33 @@
+ion-header {
+  height: 10vh;
+
+  ion-toolbar {
+    --background: var(--app-primary);
+    --color: white;
+    --padding-start: 16px;
+    --padding-end: 16px;
+    display: flex;
+    align-items: center;
+    height: 100%;
+  }
+}
+
+ion-icon {
+  color: white;
+  margin-right: 25px;
+  font-size: 40px;
+}
+
+ion-title {
+  font-size: 25px;
+  font-weight: 600;
+}
+
+ion-menu-button {
+  --color: white;
+  font-size: 30px;
+}
+
+ion-buttons {
+  margin: 0;
+}

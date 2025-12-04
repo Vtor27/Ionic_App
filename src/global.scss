@@ -34,4 +34,88 @@
 
 /* @import "@ionic/angular/css/palettes/dark.always.css"; */
 /* @import "@ionic/angular/css/palettes/dark.class.css"; */
-@import '@ionic/angular/css/palettes/dark.system.css';
+// @import "@ionic/angular/css/palettes/dark.system.css";
+
+/* Responsive: Limitar ancho en desktop, full en móvil */
+@media (min-width: 768px) {
+  ion-app {
+    max-width: 650px;
+    margin: 0 auto;
+    box-shadow: 0 0 20px rgba(0, 0, 0, 0.2);
+  }
+}
+
+ion-app {
+  display: flex;
+  flex-direction: column;
+  height: 100%;
+}
+
+app-head-bar {
+  flex-shrink: 0;
+}
+
+ion-router-outlet {
+  flex: 1;
+  position: relative;
+}
+
+app-tab-bar {
+  flex-shrink: 0;
+}
+
+app-side-menu {
+  position: absolute;
+}
+
+/* Paleta de colores custom - Variables CSS globales */
+/* Paleta Azul cian*/
+// :root {
+//   --app-primary: #06b6d4;
+//   --app-primary-dark: #0891b2;
+//   --app-secondary: #14b8a6;
+//   --app-success: #10b981;
+//   --app-warning: #f59e0b;
+//   --app-danger: #ef4444;
+//   --app-background: #f8fafc;
+//   --app-card-background: #ffffff;
+//   --app-text-primary: #0f172a;
+//   --app-text-secondary: #64748b;
+//   --app-border: #e2e8f0;
+// }
+
+/*Paleta Morada*/
+:root {
+  --app-primary: #6366f1;
+  --app-primary-dark: #4f46e5;
+  --app-secondary: #8b5cf6;
+  --app-tab-bar: #e5d9ff;
+  --app-success: #22c55e;
+  --app-warning: #f59e0b;
+  --app-danger: #ef4444;
+  --app-background: #f8fafc;
+  --app-card-background: #ffffff;
+  --app-text-primary: #1e1b4b;
+  --app-text-secondary: #64748b;
+  --app-border: #e2e8f0;
+}
+
+/*Paleta Verde*/
+// :root {
+//   --app-primary: #10b981;
+//   --app-primary-dark: #059669;
+//   --app-secondary: #06b6d4;
+//   --app-success: #22c55e;
+//   --app-warning: #f59e0b;
+//   --app-danger: #ef4444;
+//   --app-background: #f0fdf4;
+//   --app-card-background: #ffffff;
+//   --app-text-primary: #14532d;
+//   --app-text-secondary: #6b7280;
+//   --app-border: #d1fae5;
+// }
+
+/* Fondo general de la app */
+ion-content {
+  --background: var(--app-background);
+}
