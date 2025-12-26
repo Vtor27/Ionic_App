@@ -8,11 +8,11 @@ export const ICONS = {
 
 export const IMAGES = {
   estados: {
-    bien: '../../assets/emoticons/status-bien.png',
-    justo: '../../assets/emoticons/status-justo.png',
-    muyJusto: '../../assets/emoticons/status-muyJusto.png',
-    pasado: '../../assets/emoticons/status-pasado.png',
-    ganancias: '../../assets/emoticons/ganancias.png',
+    bien: '/assets/emoticons/status-bien.png',
+    justo: '/assets/emoticons/status-justo.png',
+    muyJusto: '/assets/emoticons/status-muyJusto.png',
+    pasado: '/assets/emoticons/status-pasado.png',
+    ganancias: '/assets/emoticons/ganancias.png',
   },
 };
 

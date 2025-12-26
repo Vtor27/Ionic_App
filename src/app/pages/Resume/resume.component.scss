@@ -7,7 +7,7 @@ ion-col {
 }
 
 ion-card {
-  border: 2px solid transparent;
+  border: 4px solid transparent;
 
   &.status-bien {
     border-color: var(--app-success);
@@ -24,11 +24,334 @@ ion-card {
   &.status-pasado {
     border-color: var(--app-danger);
   }
+}
 
-  ion-card-content {
+.card-status {
+  .card-status {
     display: flex;
     justify-content: center;
     align-items: center;
     flex-direction: row;
+  }
+
+  ion-card-content {
+    ion-text {
+      font-size: 20px;
+      font-weight: bold;
+      color: black;
+    }
+
+    ion-img {
+      width: 60px;
+      height: 60px;
+      margin-left: 15px;
+    }
+  }
+}
+
+.card-saldo {
+  display: flex;
+  flex-direction: column;
+  height: auto;
+  width: 96%;
+  padding-bottom: 16px;
+  border: 2px solid black;
+
+  ion-card-content {
+    width: 100%;
+    text-align: left;
+    padding: 0;
+
+    ion-card-header {
+      ion-card-title {
+        ion-text {
+          font-size: 20px;
+          font-weight: bold;
+          color: black;
+        }
+      }
+    }
+  }
+
+  .saldo-content {
+    padding-left: 5%;
+
+    ion-text {
+      font-size: 20px;
+      color: black;
+      display: block;
+      margin: 0;
+    }
+  }
+
+  .progress-bar {
+    display: flex;
+    flex-direction: row;
+    width: 80%;
+    height: 20px;
+    margin-top: 10px;
+    --background: #E0E0E0;
+    --progress-background: #B915ED;
+    border: 2px solid gray;
+    border-radius: 8px;
+  }
+
+  .progress-content {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-around;
+    align-items: center;
+    padding-right: 5px;
+    margin-top: 5px;
+
+    span {
+      font-size: 18px;
+      font-weight: bold;
+      color: black;
+      white-space: nowrap;
+      margin-top: 10px;
+    }
+  }
+}
+
+.card-revission {
+  display: flex;
+  flex-direction: column;
+  height: auto;
+  width: 96%;
+  padding-bottom: 16px;
+  border: 2px solid black;
+
+  ion-card-content {
+    width: 100%;
+    text-align: left;
+    padding: 0;
+
+    ion-card-header {
+      ion-card-title {
+        ion-text {
+          font-size: 20px;
+          font-weight: bold;
+          color: black;
+        }
+      }
+    }
+  }
+
+  .prevission-content {
+    padding-left: 5%;
+
+    p {
+      font-size: 16px;
+      color: black;
+      margin: 8px 0;
+    }
+
+    .info-dias {
+      font-size: 14px;
+      color: var(--app-text-secondary);
+      margin-bottom: 12px;
+    }
+
+    .prevision-total {
+      font-size: 24px;
+      font-weight: bold;
+      margin: 12px 0;
+
+      &.ok {
+        color: var(--app-success);
+      }
+
+      &.mal {
+        color: var(--app-danger);
+      }
+    }
+
+    .aviso {
+      display: inline-block;
+      font-size: 18px;
+      padding: 12px;
+      border-radius: 8px;
+      margin-top: 12px;
+      background-color: var(--app-danger);
+      color: white;
+
+      &.ok {
+        background-color: var(--app-success);
+      }
+    }
+  }
+}
+
+.card-desglose {
+  display: flex;
+  flex-direction: column;
+  height: auto;
+  width: 96%;
+  padding-bottom: 16px;
+  border: 2px solid black;
+
+  ion-card-content {
+    width: 100%;
+    text-align: left;
+    padding: 0;
+
+    ion-card-header {
+      cursor: pointer;
+
+      ion-card-title {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+
+        ion-text {
+          font-size: 20px;
+          font-weight: bold;
+          color: black;
+        }
+
+        ion-icon {
+          font-size: 24px;
+          color: var(--app-text-secondary);
+        }
+      }
+    }
+  }
+
+  .desglose-content {
+    padding: 0 5%;
+
+    .desglose-row {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      padding: 8px 0;
+
+      .label {
+        font-size: 16px;
+        color: black;
+      }
+
+      .valor {
+        font-size: 16px;
+        color: black;
+      }
+
+      &.ingreso .valor {
+        color: var(--app-success);
+      }
+
+      &.gasto .valor {
+        color: var(--app-text-secondary);
+      }
+
+      &.disponible {
+        .label, .valor {
+          font-size: 18px;
+          font-weight: bold;
+        }
+
+        &.positivo .valor {
+          color: var(--app-success);
+        }
+
+        &.negativo .valor {
+          color: var(--app-danger);
+        }
+      }
+    }
+
+    .desglose-divider {
+      height: 1px;
+      background-color: var(--app-border);
+      margin: 8px 0;
+    }
+  }
+}
+
+.card-categorias {
+  display: flex;
+  flex-direction: column;
+  height: auto;
+  width: 96%;
+  padding-bottom: 16px;
+  border: 2px solid black;
+
+  ion-card-content {
+    width: 100%;
+    text-align: left;
+    padding: 0;
+
+    ion-card-header {
+      cursor: pointer;
+
+      ion-card-title {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+
+        ion-text {
+          font-size: 20px;
+          font-weight: bold;
+          color: black;
+        }
+
+        ion-icon {
+          font-size: 24px;
+          color: var(--app-text-secondary);
+        }
+      }
+    }
+  }
+
+  .categorias-content {
+    padding: 0 5%;
+
+    .categoria-row {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      padding: 10px 0;
+      border-bottom: 1px solid var(--app-border);
+
+      &:last-child {
+        border-bottom: none;
+      }
+
+      .categoria-info {
+        display: flex;
+        align-items: center;
+        gap: 12px;
+
+        ion-icon {
+          font-size: 24px;
+        }
+
+        .nombre {
+          font-size: 16px;
+          color: black;
+        }
+      }
+
+      .categoria-valores {
+        display: flex;
+        gap: 16px;
+
+        .porcentaje {
+          font-size: 16px;
+          color: var(--app-text-secondary);
+          min-width: 40px;
+          text-align: right;
+        }
+
+        .total {
+          font-size: 16px;
+          font-weight: bold;
+          color: black;
+          min-width: 60px;
+          text-align: right;
+        }
+      }
+    }
   }
 }

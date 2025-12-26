@@ -2,10 +2,131 @@
   <ion-grid>
     <ion-row>
       <ion-col>
-        <ion-card [ngClass]="resumeStatus.type">
-          <ion-card-content>
+        <!-- Estado general del mes-->
+        <ion-card [ngClass]="['card-status',resumeStatus.type]">
+          <ion-card-content class="card-status">
             <ion-text>Estado: </ion-text>
             <ion-img [src]="resumeStatus.image"></ion-img>
+          </ion-card-content>
+        </ion-card>
+
+        <!-- Saldo de ahorro disponible-->
+        <ion-card class="card-saldo">
+          <ion-card-content>
+            <ion-card-header>
+              <ion-card-title>
+                <ion-text>
+                  Saldo disponible:
+                </ion-text>
+              </ion-card-title>
+            </ion-card-header>
+            <div class="saldo-content">
+              <ion-text>
+                {{gastosVariables}} € de {{presupuestoVariable}} €
+              </ion-text>
+              <div class="progress-content">
+                <ion-progress-bar class="progress-bar" [value]="gastosVariables / presupuestoVariable">
+                </ion-progress-bar>
+                <span>{{getPorcentajeProgreso()}}%</span>
+              </div>
+            </div>
+          </ion-card-content>
+        </ion-card>
+
+        <!-- Prevision de gastos con el ritmo actual-->
+        <ion-card class="card-revission">
+          <ion-card-content>
+            <ion-card-header>
+              <ion-card-title>
+                <ion-text>
+                  Previsión fin de mes:
+                </ion-text>
+              </ion-card-title>
+            </ion-card-header>
+            <div class="prevission-content">
+              <p class="info-dias">Día {{diaActual}} de {{diasDelMes}}</p>
+              <p>Ritmo actual: {{mediaDiaria | number:'1.2-2'}} €/día</p>
+              <p>Si sigo así acabaré con: </p>
+              <p class="prevision-total" [ngClass]="llegaObjetivo ? 'ok' : 'mal'">
+                {{previsionFinMes | number:'1.2-2' }} €
+              </p>
+              <div *ngIf="!llegaObjetivo" class="aviso">
+                Reduce el gasto diario a {{mediaNecesaria | number:'1.2-2'}} €.
+              </div>
+              <div *ngIf="llegaObjetivo" class="aviso ok">
+                Vas por buen camino.
+              </div>
+            </div>
+          </ion-card-content>
+        </ion-card>
+
+        <!-- Desglose -->
+        <ion-card class="card-desglose">
+          <ion-card-content>
+            <ion-card-header (click)="toggleDesglose()">
+              <ion-card-title>
+                <ion-text>Desglose de gastos</ion-text>
+                <ion-icon [name]="desgloseDesplegado ? 'chevron-up-outline' : 'chevron-down-outline'"></ion-icon>
+              </ion-card-title>
+            </ion-card-header>
+
+            <div class="desglose-content" *ngIf="desgloseDesplegado">
+              <div class="desglose-row ingreso">
+                <span class="label">Ingresos:</span>
+                <span class="valor">{{ sueldo | number:'1.0-0' }} €</span>
+              </div>
+
+              <div class="desglose-row gasto">
+                <span class="label">Gastos fijos:</span>
+                <span class="valor">{{ gastosFijos | number:'1.0-0' }} € ({{ (gastosFijos / sueldo * 100) |
+                  number:'1.0-0' }}%)</span>
+              </div>
+
+              <div class="desglose-row gasto">
+                <span class="label">G. variables:</span>
+                <span class="valor">{{ gastosVariables | number:'1.0-0' }} € ({{ (gastosVariables / sueldo * 100) |
+                  number:'1.0-0' }}%)</span>
+              </div>
+
+              <div class="desglose-row gasto">
+                <span class="label">Ahorro:</span>
+                <span class="valor">{{ ahorroPrevisto | number:'1.0-0' }} € ({{ (ahorroPrevisto / sueldo * 100) |
+                  number:'1.0-0' }}%)</span>
+              </div>
+
+              <div class="desglose-divider"></div>
+
+              <div class="desglose-row disponible" [ngClass]="saldoDisponible >= 0 ? 'positivo' : 'negativo'">
+                <span class="label">Disponible:</span>
+                <span class="valor">{{ saldoDisponible | number:'1.0-0' }} €</span>
+              </div>
+            </div>
+          </ion-card-content>
+        </ion-card>
+
+        <!--Gastos por categoría-->
+        <!-- Por categoría -->
+        <ion-card class="card-categorias">
+          <ion-card-content>
+            <ion-card-header (click)="toggleCategorias()">
+              <ion-card-title>
+                <ion-text>Por categoría (variables)</ion-text>
+                <ion-icon [name]="categoriasDesplegado ? 'chevron-up-outline' : 'chevron-down-outline'"></ion-icon>
+              </ion-card-title>
+            </ion-card-header>
+
+            <div class="categorias-content" *ngIf="categoriasDesplegado">
+              <div class="categoria-row" *ngFor="let cat of gastosCategoria">
+                <div class="categoria-info">
+                  <ion-icon [name]="cat.icono" [style.color]="cat.color"></ion-icon>
+                  <span class="nombre">{{ cat.nombre }}</span>
+                </div>
+                <div class="categoria-valores">
+                  <span class="porcentaje">{{ cat.porcentaje | number:'1.0-0' }}%</span>
+                  <span class="total">{{ cat.total | number:'1.0-0' }}€</span>
+                </div>
+              </div>
+            </div>
           </ion-card-content>
         </ion-card>
       </ion-col>
