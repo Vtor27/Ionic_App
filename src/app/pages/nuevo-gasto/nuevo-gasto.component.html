@@ -1,0 +1,93 @@
+<ion-content class="ion-padding">
+  <ion-grid>
+    <ion-row>
+      <ion-col>
+
+        <ion-text class="page-title">Nuevo Gasto</ion-text>
+
+        <ion-card class="card-field">
+          <ion-card-content>
+
+            <!-- Cantidad -->
+            <div class="field-group">
+              <ion-text class="field-label">Cantidad</ion-text>
+              <div class="field-content">
+                <ion-input type="number" inputmode="decimal" placeholder="0,00" fill="outline" [(ngModel)]="cantidad">
+                </ion-input>
+                <span class="currency">€</span>
+              </div>
+            </div>
+
+            <!-- Fecha -->
+            <div class="field-group">
+              <ion-text class="field-label">Fecha</ion-text>
+              <div class="field-content">
+                <ion-input type="date" [value]="fechaSeleccionada" (ionChange)="onFechaInputChange($event)"
+                  fill="outline">
+                </ion-input>
+              </div>
+            </div>
+
+            <!-- Categoría -->
+            <div class="field-group">
+              <ion-text class="field-label">Categoría</ion-text>
+              <div class="field-content">
+                <ion-select placeholder="Seleccionar..." interface="popover" fill="outline"
+                  [(ngModel)]="categoriaSeleccionada">
+                  <ion-select-option *ngFor="let cat of categorias" [value]="cat.id">
+                    {{ cat.nombre }}
+                  </ion-select-option>
+                </ion-select>
+              </div>
+            </div>
+
+            <!-- Descripción -->
+            <div class="field-group">
+              <ion-text class="field-label">Descripción (opcional)</ion-text>
+              <div class="field-content">
+                <ion-input type="text" placeholder="Ej: Compra Mercadona" fill="outline" [(ngModel)]="descripcion">
+                </ion-input>
+              </div>
+            </div>
+
+            <!-- Foto Ticket -->
+            <div class="field-group">
+              <ion-text class="field-label">Foto del ticket (opcional)</ion-text>
+              <div class="photo-content">
+                <ion-button *ngIf="!fotoPreview" expand="block" fill="outline" (click)="tomarFoto()">
+                  <ion-icon name="camera-outline" slot="start"></ion-icon>
+                  Tomar foto
+                </ion-button>
+
+                <div class="photo-preview" *ngIf="fotoPreview">
+                  <img [src]="fotoPreview" alt="Ticket" />
+                  <div class="photo-actions">
+                    <ion-button fill="clear" size="small" (click)="tomarFoto()">
+                      <ion-icon name="camera-outline" slot="start"></ion-icon>
+                      Repetir
+                    </ion-button>
+                    <ion-button fill="clear" size="small" color="danger" (click)="eliminarFoto()">
+                      <ion-icon name="trash-outline" slot="start"></ion-icon>
+                      Eliminar
+                    </ion-button>
+                  </div>
+                </div>
+              </div>
+            </div>
+
+            <!-- Botones -->
+            <div class="buttons-group">
+              <ion-button fill="outline" color="medium" (click)="cancelar()">
+                Cancelar
+              </ion-button>
+              <ion-button fill="solid" color="primary" (click)="guardarGasto()">
+                Guardar Gasto
+              </ion-button>
+            </div>
+
+          </ion-card-content>
+        </ion-card>
+      </ion-col>
+    </ion-row>
+  </ion-grid>
+</ion-content>

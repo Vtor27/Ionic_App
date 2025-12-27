@@ -1,0 +1,93 @@
+ion-content {
+  --background: var(--app-background);
+}
+
+.page-title {
+  display: block;
+  font-size: 24px;
+  font-weight: bold;
+  color: black;
+  text-align: center;
+  margin-bottom: 16px;
+}
+
+.card-field {
+  display: flex;
+  flex-direction: column;
+  width: 96%;
+  border: 2px solid black;
+
+  ion-card-content {
+    width: 100%;
+    padding: 16px;
+  }
+
+  .field-group {
+    margin-bottom: 20px;
+
+    &:last-child {
+      margin-bottom: 0;
+    }
+  }
+
+  .field-label {
+    display: block;
+    font-size: 18px;
+    font-weight: bold;
+    color: black;
+    margin-bottom: 8px;
+  }
+
+  .field-content {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+
+    ion-input {
+      --background: white;
+      --border-radius: 8px;
+      --padding-start: 12px;
+      font-size: 18px;
+    }
+
+    .currency {
+      font-size: 20px;
+      font-weight: bold;
+      color: black;
+    }
+
+    ion-select {
+    --background: white;
+    --border-radius: 8px;
+    --padding-start: 12px;
+    font-size: 18px;
+    width: 100%;
+  }
+  }
+
+  .photo-content {
+  ion-button {
+    --border-color: var(--app-primary);
+    --color: var(--app-primary);
+  }
+
+  .photo-preview {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 8px;
+
+    img {
+      max-width: 100%;
+      max-height: 200px;
+      border-radius: 8px;
+      border: 2px solid var(--app-border);
+    }
+
+    .photo-actions {
+      display: flex;
+      gap: 16px;
+    }
+  }
+}
+}

@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { Router } from '@angular/router';
 import {
   IonTabBar,
   IonTabButton,
@@ -17,9 +18,15 @@ import { ICONS } from 'src/app/constants/assetsRoutes';
 })
 export class TabBarComponent implements OnInit {
   icons = ICONS;
-  constructor() {
+  constructor(
+    private router: Router
+  ) {
     addIcons({ homeOutline, cardOutline, calendarOutline });
   }
 
   ngOnInit() {}
+
+  navigateTo(route: string) {
+    this.router.navigate([route]);
+  }
 }
